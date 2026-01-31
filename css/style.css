@@ -1,0 +1,414 @@
+/* =====================================================
+   RESET & BASE
+===================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #fafafa;
+  color: #111;
+  line-height: 1.75;
+}
+
+/* =====================================================
+   GLOBAL TYPOGRAPHY & RHYTHM
+===================================================== */
+h1, h2, h3 {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+p {
+  color: #444;
+}
+
+strong {
+  color: #111;
+}
+
+ul {
+  list-style: none;
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+.header {
+  text-align: center;
+  padding: 4rem 1.5rem 3.5rem;
+}
+
+.header h1 {
+  font-size: 2.8rem;
+  letter-spacing: 3px;
+}
+
+.subtitle {
+  margin-top: 0.8rem;
+  color: #777;
+  font-size: 0.95rem;
+  max-width: 620px;
+  margin-inline: auto;
+}
+
+/* =====================================================
+   HERO CAROUSEL
+===================================================== */
+.hero-carousel {
+  padding: 2.5rem 1.5rem 5rem;
+  text-align: center;
+}
+
+.carousel {
+  max-width: 720px;
+  margin: 0 auto 3rem;
+  position: relative;
+}
+
+.carousel-item {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.18);
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transform: scale(0.98);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.carousel-item.active {
+  opacity: 1;
+  transform: scale(1);
+  position: relative;
+}
+
+.hero-caption h1 {
+  font-size: 2.6rem;
+  margin-bottom: 1rem;
+}
+
+.hero-caption p {
+  max-width: 660px;
+  margin: 0 auto 2.2rem;
+  font-size: 1rem;
+  line-height: 1.85;
+}
+
+/* =====================================================
+   BUTTON
+===================================================== */
+button {
+  background: #111;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 2.1rem;
+  border-radius: 40px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+button:hover {
+  background: #c6a15b;
+  color: #111;
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px rgba(198,161,91,0.35);
+}
+
+/* =====================================================
+   SECTION BASE (VISUAL RHYTHM)
+===================================================== */
+.section {
+  max-width: 760px;
+  margin: 0 auto 5.5rem;
+  padding: 0 1.5rem;
+}
+
+.section h3 {
+  font-size: 1.45rem;
+  margin-bottom: 1.4rem;
+  position: relative;
+}
+
+.section h3::after {
+  content: "";
+  display: block;
+  width: 54px;
+  height: 2px;
+  background: #c6a15b;
+  margin-top: 0.7rem;
+}
+
+/* =====================================================
+   LEAD / REFLECTIVE TEXT
+===================================================== */
+.lead {
+  font-size: 1.08rem;
+  font-style: italic;
+  color: #555;
+  max-width: 660px;
+}
+
+/* =====================================================
+   LIST
+===================================================== */
+.list li {
+  padding-left: 1.2rem;
+  margin-bottom: 0.9rem;
+  position: relative;
+  color: #444;
+}
+
+.list li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: #c6a15b;
+}
+
+/* =====================================================
+   HIGHLIGHT SECTION (CARD FEEL)
+===================================================== */
+.highlight {
+  background: #fff;
+  border-radius: 26px;
+  padding: 3.2rem 1.6rem;
+  box-shadow: 0 26px 50px rgba(0,0,0,0.06);
+}
+
+/* =====================================================
+   FACT GRID (INTERACTIVE)
+===================================================== */
+.fact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.6rem;
+}
+
+.fact-card {
+  border: 1px solid #eee;
+  padding: 1.6rem;
+  border-radius: 18px;
+  text-align: center;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.fact-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 42px rgba(0,0,0,0.12);
+}
+
+.fact-title {
+  font-size: 0.78rem;
+  color: #777;
+  display: block;
+  margin-bottom: 0.45rem;
+}
+
+.fact-value {
+  font-size: 1.08rem;
+  font-weight: 600;
+}
+
+/* =====================================================
+   BADGES
+===================================================== */
+.badge-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-bottom: 1.3rem;
+}
+
+.badge {
+  padding: 0.5rem 1.25rem;
+  border-radius: 30px;
+  font-size: 0.78rem;
+}
+
+.badge.good {
+  background: #c6a15b;
+  color: #111;
+}
+
+.badge.warn {
+  background: #eee;
+  color: #555;
+}
+
+.badge.bad {
+  background: #111;
+  color: #fff;
+}
+
+.note {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* =====================================================
+   SYSTEM SECTION (SI CORE)
+===================================================== */
+.system {
+  background: #fff;
+  border-radius: 26px;
+  padding: 3.2rem 1.6rem;
+  box-shadow: 0 26px 50px rgba(0,0,0,0.06);
+}
+
+.system-desc {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 2.2rem;
+}
+
+/* =====================================================
+   FORM
+===================================================== */
+.form label {
+  display: block;
+  margin-bottom: 1.3rem;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.form input[type="checkbox"] {
+  margin-right: 0.6rem;
+}
+
+.form input[type="number"] {
+  width: 100%;
+  margin-top: 0.6rem;
+  padding: 0.75rem;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+}
+
+/* =====================================================
+   RESULT BOX
+===================================================== */
+.result-box {
+  margin-top: 2.4rem;
+  padding: 1.6rem;
+  border-left: 4px solid #c6a15b;
+  background: #fafafa;
+  font-size: 0.9rem;
+  display: none;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+.footer {
+  text-align: center;
+  padding: 4.5rem 1.5rem;
+  font-size: 0.75rem;
+  color: #888;
+}
+
+/* =====================================================
+   BACK TO TOP (SIGNATURE ELEMENT)
+===================================================== */
+#backToTop {
+  position: fixed;
+  bottom: 26px;
+  right: 26px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #111;
+  color: #fff;
+  font-size: 1.35rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  transform: translateY(24px) scale(0.85);
+  pointer-events: none;
+  transition: all 0.35s ease;
+}
+
+#backToTop.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+#backToTop:hover {
+  background: #c6a15b;
+  color: #111;
+}
+
+/* =====================================================
+   SCROLL REVEAL
+===================================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: all 0.8s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =====================================================
+   RESPONSIVE — TABLET & MOBILE
+===================================================== */
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-caption h1 {
+    font-size: 2.1rem;
+  }
+
+  .hero-caption p {
+    font-size: 0.95rem;
+  }
+
+  .section {
+    margin-bottom: 4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding-top: 3.2rem;
+  }
+
+  .header h1 {
+    font-size: 1.95rem;
+  }
+
+  .hero-caption h1 {
+    font-size: 1.85rem;
+  }
+
+  button {
+    padding: 0.65rem 1.7rem;
+  }
+
+  #backToTop {
+    width: 48px;
+    height: 48px;
+    font-size: 1.15rem;
+  }
+}
