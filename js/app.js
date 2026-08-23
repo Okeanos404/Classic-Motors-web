@@ -1,34 +1,104 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   /* =====================================================
-     SCROLL REVEAL (SMOOTH & INTENTIONAL)
+     SCROLL REVEAL (ANIME.JS 3D ANIMATIONS)
   ===================================================== */
   const reveals = document.querySelectorAll(".reveal");
+
+  // Initial header animation
+  if (document.querySelector('.header')) {
+    anime({
+      targets: '.header',
+      opacity: [0, 1],
+      duration: 800,
+      easing: 'linear'
+    });
+
+    anime({
+      targets: '.header img, .header h1, .header p',
+      translateY: [30, 0],
+      translateZ: [20, 0],
+      opacity: [0, 1],
+      rotateX: [10, 0],
+      duration: 1400,
+      delay: anime.stagger(150),
+      easing: 'easeOutQuart'
+    });
+  }
 
   const revealObserver = new IntersectionObserver(
     entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("active");
+          if (!entry.target.classList.contains('header')) {
+            // Main container reveal
+            anime({
+              targets: entry.target,
+              translateY: [40, 0],
+              translateZ: [30, 0],
+              opacity: [0, 1],
+              rotateX: [8, 0], // 3D effect subtle
+              duration: 1400,
+              easing: 'easeOutQuart'
+            });
+
+            // Stagger inner elements (lists, cards, badges)
+            const staggerChildren = entry.target.querySelectorAll('.fact-card, .list li, .badge');
+            if(staggerChildren.length > 0) {
+              anime({
+                targets: staggerChildren,
+                translateY: [20, 0],
+                opacity: [0, 1],
+                scale: [0.95, 1],
+                rotateY: [8, 0], // 3D stagger subtle
+                duration: 1200,
+                delay: anime.stagger(100, {start: 200}),
+                easing: 'easeOutQuart'
+              });
+            }
+          }
           revealObserver.unobserve(entry.target);
         }
       });
     },
-    { threshold: 0.18 }
+    { threshold: 0.15 }
   );
 
   reveals.forEach(el => revealObserver.observe(el));
 
   /* =====================================================
-     HERO CAROUSEL (AUTO + PAUSE ON INTERACTION)
+     HERO CAROUSEL (ANIME.JS 3D ANIMATION)
   ===================================================== */
   const slides = document.querySelectorAll(".carousel-item");
   let currentSlide = 0;
   let carouselTimer;
 
   function showSlide(index) {
-    slides.forEach(slide => slide.classList.remove("active"));
+    slides.forEach((slide, i) => {
+      if(i !== index) {
+        slide.classList.remove("active"); // Remove immediately to prevent layout shift
+        anime({
+          targets: slide,
+          opacity: 0,
+          scale: 0.95,
+          rotateY: -8, // 3D out subtle
+          translateZ: -20,
+          duration: 1200,
+          easing: 'easeOutQuart'
+        });
+      }
+    });
+
     slides[index].classList.add("active");
+    anime({
+      targets: slides[index],
+      opacity: [0, 1],
+      scale: [1.02, 1],
+      rotateY: [8, 0], // 3D in subtle
+      translateZ: [20, 0],
+      duration: 1400,
+      easing: 'easeOutQuart'
+    });
   }
 
   function startCarousel() {
@@ -130,7 +200,17 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
 
       resultBox.style.display = "block";
-      resultBox.style.animation = "fadeUp 0.6s ease";
+      
+      // 3D Result Box Animation subtle
+      anime({
+        targets: resultBox,
+        translateY: [30, 0],
+        translateZ: [20, 0],
+        opacity: [0, 1],
+        rotateX: [-10, 0],
+        duration: 1200,
+        easing: 'easeOutQuart'
+      });
 
       resultBox.scrollIntoView({ behavior: "smooth" });
 

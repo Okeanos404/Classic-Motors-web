@@ -82,7 +82,7 @@ ul {
   left: 0;
   opacity: 0;
   transform: scale(0.98);
-  transition: opacity 1s ease, transform 1s ease;
+  /* Animations handled by Anime.js */
 }
 
 .carousel-item.active {
@@ -167,6 +167,7 @@ button:hover {
   margin-bottom: 0.9rem;
   position: relative;
   color: #444;
+  opacity: 0; /* For Anime.js stagger */
 }
 
 .list li::before {
@@ -200,6 +201,7 @@ button:hover {
   padding: 1.6rem;
   border-radius: 18px;
   text-align: center;
+  opacity: 0; /* For Anime.js stagger */
   transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
@@ -234,6 +236,7 @@ button:hover {
   padding: 0.5rem 1.25rem;
   border-radius: 30px;
   font-size: 0.78rem;
+  opacity: 0; /* For Anime.js stagger */
 }
 
 .badge.good {
@@ -359,13 +362,7 @@ button:hover {
 ===================================================== */
 .reveal {
   opacity: 0;
-  transform: translateY(36px);
-  transition: all 0.8s cubic-bezier(0.2, 0.6, 0.2, 1);
-}
-
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
+  /* 3D Animations and scroll reveal handled entirely by Anime.js */
 }
 
 /* =====================================================
